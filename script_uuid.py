@@ -1,10 +1,15 @@
 import uuid
 
 
+def generate_uuid():
+    return str(uuid.uuid4())
+
+
 # 1 вариант - самый понятный, как мне кажется
 # создаем переменную строку, плюсуем ее с uuid начиная с 8 символа
 # (по индексу 0-7 заменяем сиволы на autotest)
-def first_function(identificator):
+def first_function():
+    identificator = generate_uuid()
     string = 'autotest'
     a = string + identificator[8:]
     return a
@@ -14,7 +19,8 @@ def first_function(identificator):
 # разбиваем строку на массивы (все что до первого - и после)
 # с 0 индекса все приравниваем к нашей строке
 # и соединяем нашу строку с сеператором - обратно (справа налево)
-def second_function(identificator):
+def second_function():
+    identificator = generate_uuid()
     string = 'autotest'
     b = identificator.split('-')
     b[0] = string
@@ -25,7 +31,8 @@ def second_function(identificator):
 # 3 вариант - нагуглила что можно и так
 # делим первую часть, которую нужно разделить от всей остальной по первому нахождению -
 # и плюсуем нашу строку с разделителем и второй частью по индексу 1
-def third_function(identificator):
+def third_function():
+    identificator = generate_uuid()
     string = 'autotest'
     d = identificator.split('-', 1)
     e = string + '-' + d[1]
@@ -35,7 +42,8 @@ def third_function(identificator):
 # 4 вариант - в строке нельзя заменить символы по их индексу, поэтому собираем
 # еще одну строку посимвольно в цикле:
 # первые 8 символов берем из строки autotest, а оставшиеся из uuid
-def fourth_function(identificator):
+def fourth_function():
+    identificator = generate_uuid()
     string = 'autotest'
     result = ''
 
@@ -49,7 +57,8 @@ def fourth_function(identificator):
 
 # 5 вариант - заменяем в листе uuid первые символы на все символы строки autotest
 # получаем готовый лист и преобразуем его в строку с помощью join
-def fifth_function(identificator):
+def fifth_function():
+    identificator = generate_uuid()
     string = 'autotest'
     id_list = list(identificator)
 
@@ -58,11 +67,9 @@ def fifth_function(identificator):
     return ''.join(id_list)
 
 
-id = str(uuid.uuid4())
-print(id)
 
-print(first_function(id))
-print(second_function(id))
-print(third_function(id))
-print(fourth_function(id))
-print(fifth_function(id))
+print(first_function())
+print(second_function())
+print(third_function())
+print(fourth_function())
+print(fifth_function())
